@@ -1201,6 +1201,6 @@ var dataSource = [
 	]
 ];
 
-if (module && module.exports) {
+if ('undefined' !== typeof module && module.exports) {
 	module.exports = dataSource;
 }
