@@ -3,7 +3,7 @@ var dataSource = require('../res/dataSource');
 var _ = require('../vendor/lodash.min');
 var fs = require('fs');
 var path = require('path')
-
+var preambula = '/* Built with shell command `node scripts/build-geoip.js` */\n'
 
 // var fd = fs.openSync(path.resolve(__dirname, '../res/ipdata.json'), 'w+');
 // console.log(`fd ${fd}`);
@@ -37,7 +37,7 @@ Promise.all(promises).then(
 
 		console.log('infoByIp', infoByIp);
 		writeFile('../res/ipdata.json', JSON.stringify(infoByIp))
-		writeFile('../res/ipdata.js', 'var ipdata = '+JSON.stringify(infoByIp)+';');
+		writeFile('../res/ipdata.js', preambula+'var ipdata = '+JSON.stringify(infoByIp)+';');
 
 	},
 	function (err) {
